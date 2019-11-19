@@ -13,10 +13,10 @@
                     $this->loginUser();
                 break;
 
-                case "cadastro-user";
+                case "cadastrar-user";
                     $this->cadastroUser();
                 break;
-                }
+            }
         }
 
         private function formularioUser(){
@@ -28,21 +28,23 @@
         }
 
         public function cadastroUser(){
+ 
             $user = new User();
             $nome = $_POST['nome'];
             $email = $_POST['email'];
             $login = $_POST['login'];
             $senha = $_POST['senha'];
-
+ 
             $resultado = $user->criarUser($nome, $email, $login, $senha);
+     
             /* echo "<pre>";
             var_dump($resultado);
             exit; */
             if($resultado){
-                echo "<script>alert('Usuário cadastrado com sucesso!')</script>";
-                header('location:posts');
-            }else{
-                echo "<script>alert('Falha ao cadastrar usuário!')</script>";
+                echo  "<script>alert!('Usuário cadastrado com sucesso!);</script>";
+                header('Location:posts');
+            }else {
+                echo  "<script>alert!('Erro ao cadastrar o usuário!);</script>";
             }
         }
 

@@ -1,7 +1,7 @@
 <?php include_once("includes/header.php"); ?>
 <main class="container mt-5">
     <h1>Cadastra-se preenchendo o formulário abaixo: </h1>
-        <form method="POST" action="cadastro-user">
+        <form method="POST" action="cadastrar-user">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <label>Nome:</label>

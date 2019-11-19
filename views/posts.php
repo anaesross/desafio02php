@@ -1,5 +1,5 @@
 <?php 
-    $user = $_REQUEST['nome'];
+    /* $user = $_REQUEST['nome']; */
     $posts = $_REQUEST['posts'];
 
 ?> 

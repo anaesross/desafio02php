@@ -36,7 +36,7 @@ class PostController {
         $resultado = $post->criarPost($caminhoSalvar, $descricao);
         if($resultado){
             echo  "<script>alert('Post cadastrado com sucesso!);</script>";
-            header('location: posts');
+       
         }else {
             echo  "<script>alert('Erro ao cadastrar o post!);</script>";
         }
