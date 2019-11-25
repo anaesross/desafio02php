@@ -16,6 +16,10 @@
                 case "cadastrar-user";
                     $this->cadastroUser();
                 break;
+
+                case "autentica-user"; 
+                    $this->autenticaUser();
+                    break;                
             }
         }
 
@@ -48,8 +52,26 @@
             }
         }
 
-
+        function autenticaUser(){
+            echo 'on';
+            if(empty($_POST['nome']) || $_POST['senha']) { //validação se o formulário foi preenchido
+                echo "<script>alert!('Usuário ou senha inválidos')</script>";
+                    header('Location:formulario-post');
+            }
+            else {            
+                $nome  = $_POST['nome'];
+                $senha  = $_POST['senha'];
+                
+                $dados = autenticaUser($nome, $senha); // chamando método do model
+                if(!$dados) { //validação se o nome e senha são iguais do formulário-banco
+                    // erro no login
+                }
+                else {
+                    session_start();
+                    $_SESSION['fakeig']['user'] = $dados;
+                    header('Location:formulario-post');
+                }
+            }
+        }
     }
-
-
 ?>

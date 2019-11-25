@@ -11,11 +11,9 @@
                 <div class="card-body">
                         <p class="card-text">
                             <?php echo $post->descricao; ?>
+                            <?php echo $_SESSION['nome']; ?>
                         </p>
                 </div>
-            <p class="card-text d-flex justify-content-end">
-                <?= $user->login ?>
-            </p>
             </div>
         <?php endforeach; ?>
             <a class="float-button" href="formulario-post">&#10010;</a>

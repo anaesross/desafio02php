@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="views/css/styles.css">
 </head>
 <body>
+    <?php session_start();?>
     <header>
         <nav class="navbar topo-instagran justify-content-center">
             <a class="navbar-brand" href="#"><img width="90" src="views/img/logo.png" alt="" srcset="">Instagram</a>
