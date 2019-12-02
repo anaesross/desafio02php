@@ -14,11 +14,6 @@
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label>Login:</label>
-                    <input type="text" class="form-control" name="login" placeholder="Crie seu login de acesso">
-                </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <label>Senha:</label>
                     <input type="password" class="form-control" name="senha" placeholder="Crie sua senha de acesso">
                 </div>

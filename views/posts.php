@@ -11,7 +11,7 @@
                 <div class="card-body">
                         <p class="card-text">
                             <?php echo $post->descricao; ?>
-                            <?php echo $_SESSION['nome']; ?>
+                            <?php echo  $_SESSION['fakeig']['user']['nome'];/* User::carregarDados($post->id); */ ?>
                         </p>
                 </div>
             </div>

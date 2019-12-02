@@ -36,10 +36,9 @@
             $user = new User();
             $nome = $_POST['nome'];
             $email = $_POST['email'];
-            $login = $_POST['login'];
             $senha = $_POST['senha'];
  
-            $resultado = $user->criarUser($nome, $email, $login, $senha);
+            $resultado = $user->criarUser($nome, $email, $senha);
      
             /* echo "<pre>";
             var_dump($resultado);
@@ -52,25 +51,31 @@
             }
         }
 
-        function autenticaUser(){
-            echo 'on';
-            if(empty($_POST['nome']) || $_POST['senha']) { //validação se o formulário foi preenchido
-                echo "<script>alert!('Usuário ou senha inválidos')</script>";
-                    header('Location:formulario-post');
+        public function autenticaUser(){
+            if(empty($_POST['email']) || empty($_POST['senha'])) { //validação se o formulário foi preenchido
+                echo  "<script>alert('Favor preencher os campos informados');</script>";
+                header('Location:formulario');
             }
             else {            
-                $nome  = $_POST['nome'];
+                $email  = $_POST['email'];
                 $senha  = $_POST['senha'];
-                
-                $dados = autenticaUser($nome, $senha); // chamando método do model
-                if(!$dados) { //validação se o nome e senha são iguais do formulário-banco
-                    // erro no login
-                }
-                else {
-                    session_start();
-                    $_SESSION['fakeig']['user'] = $dados;
-                    header('Location:formulario-post');
-                }
+            }  
+
+            // var_dump($senha);
+            // die; 
+            
+            $user = new User();
+
+            $dados = $user->autenticarUser($email, $senha); // chamando método do model
+
+            
+            if($dados) { //validação se o nome e senha são iguais do formulário-banco
+                session_start();
+                $_SESSION['fakeig']['user'] = $dados;
+                header('Location:formulario-post');
+            }
+            else {
+                echo  "<script>alert('Usuário ou senha inválidos');</script>";
             }
         }
     }

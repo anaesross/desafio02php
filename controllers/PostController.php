@@ -1,5 +1,6 @@
 <?php 
 include_once "models/Post.php";
+include_once "models/User.php";
 
 class PostController {
 
@@ -44,7 +45,10 @@ class PostController {
 
     private function listarPosts(){
         $post = new Post();
+        $user = new User();
         $listaPosts = $post->listarPosts();
+        $mostraUser = $user->carregarDados();
+        $_REQUEST['users'] = $mostraUser;
         $_REQUEST['posts'] = $listaPosts;
         $this->viewPosts();
     }
