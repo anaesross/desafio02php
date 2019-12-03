@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Nov-2019 às 15:50
+-- Generation Time: 03-Dez-2019 às 01:02
 -- Versão do servidor: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -25,14 +25,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `likes`
+--
+
+CREATE TABLE `likes` (
+  `id_like` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `likes`
+--
+
+INSERT INTO `likes` (`id_like`, `id_usuario`, `id_post`) VALUES
+(1, 3, 6),
+(2, 3, 6),
+(3, 3, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `posts`
 --
 
 CREATE TABLE `posts` (
   `id_post` int(10) NOT NULL,
   `imagem` varchar(255) DEFAULT NULL,
-  `descricao` varchar(255) DEFAULT NULL
+  `descricao` varchar(255) DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `posts`
+--
+
+INSERT INTO `posts` (`id_post`, `imagem`, `descricao`, `id_usuario`) VALUES
+(6, 'views/img/ceu.jpg', 'Descricao da foto', 3),
+(7, 'views/img/ceu.jpg', 'ceu de novo', 3),
+(8, 'views/img/ceu.jpg', 'testete', 3);
 
 -- --------------------------------------------------------
 
@@ -44,7 +75,6 @@ CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `login` varchar(255) DEFAULT NULL,
   `senha` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -52,16 +82,18 @@ CREATE TABLE `users` (
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `nome`, `email`, `login`, `senha`) VALUES
-(1, 'oi', 'oi@gmIail.com', 'oioioioi', '123456'),
-(2, 'oi', 'oi@gmIail.com', 'oioioioi', '12345'),
-(3, 'AnaÃª', 'anae08@gmail.com', 'anae', 'anae12'),
-(4, 'anae', 'anae08@gmail.com', 'anae', 'anae12'),
-(5, 'AnaÃª', 'anae@anae.com.br', 'anae', 'anae12');
+INSERT INTO `users` (`id`, `nome`, `email`, `senha`) VALUES
+(3, 'anae', 'anae@gmail.com', 'anae12');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_like`);
 
 --
 -- Indexes for table `posts`
@@ -80,16 +112,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_post` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

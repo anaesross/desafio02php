@@ -1,6 +1,6 @@
 <?php 
 
-include("Conexao.php");
+require_once "Conexao.php";
 
 class User extends Conexao{
 

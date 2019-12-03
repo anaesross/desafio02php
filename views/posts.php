@@ -9,10 +9,14 @@
             <div class="card mt-5">
                     <img id="cardimg" src="<?php echo $post->imagem; ?>" alt="Card image cap">
                 <div class="card-body">
-                        <p class="card-text">
-                            <?php echo $post->descricao; ?>
-                            <?php echo  $_SESSION['fakeig']['user']['nome'];/* User::carregarDados($post->id); */ ?>
-                        </p>
+                    <p class="card-text">
+                        <?php echo $post->descricao; ?> <br>
+                        <?php echo  utf8_encode($post->nome); ?> <br>
+                        <form method="POST" action="like-post">
+                            <input type='hidden' name='post_id' value='<?= $post->id_post ?>'>
+                            <button class="btn btn-outline-primary"> Curtir <?= $post->likes; ?></button>
+                        </form>
+                    </p>
                 </div>
             </div>
         <?php endforeach; ?>

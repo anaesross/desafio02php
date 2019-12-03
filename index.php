@@ -15,6 +15,12 @@
             $controller = new PostController();
             $controller->acao($rotas);
         break;
+        
+        case "like-post":
+            include "controllers/PostController.php";
+            $controller = new PostController();
+            $controller->acao($rotas);
+        break;
 
         case "cadastrar-post":
             include "controllers/PostController.php";
@@ -45,6 +51,7 @@
             $controller = new UserController();
             $controller->acao($rotas);
         break;
+
 
 
     }

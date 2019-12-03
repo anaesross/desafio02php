@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="views/css/styles.css">
 </head>
 <body>
-    <?php session_start();
-        var_dump($_SESSION);die;
+    <?php /* session_start();
+        var_dump($_SESSION);die; */
     ?>
     <header>
         <nav class="navbar topo-instagran justify-content-center">

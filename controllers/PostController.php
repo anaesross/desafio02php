@@ -5,6 +5,7 @@ include_once "models/User.php";
 class PostController {
 
     public function acao($rotas){
+        
         switch($rotas){
             case "posts":
                $this->listarPosts();
@@ -14,6 +15,9 @@ class PostController {
             break;
             case "cadastrar-post":
                 $this->cadastroPost();
+            break;
+            case "like-post":                 
+                $this->like();
             break;
         }
     }
@@ -34,22 +38,33 @@ class PostController {
         $caminhoSalvar = "views/img/$nomeArquivo";
         move_uploaded_file($linkTemp, $caminhoSalvar);
        
-        $resultado = $post->criarPost($caminhoSalvar, $descricao);
-        if($resultado){
+        session_start();
+        
+        $resultado = $post->criarPost($caminhoSalvar, $descricao, $_SESSION['fakeig']['user']['id']);
+
+        if($resultado){             
             echo  "<script>alert!('Post cadastrado com sucesso!);</script>";
-            header('Location:posts');
-        }else {
+            header ('Location:posts');
+        }else {             
             echo  "<script>alert!('Erro ao cadastrar o post!);</script>";
+            header('Location:formulario-post');
         }
     }
 
-    private function listarPosts(){
+    private function listarPosts(){         
         $post = new Post();
-        $user = new User();
-        $listaPosts = $post->listarPosts();
-        $mostraUser = $user->carregarDados();
-        $_REQUEST['users'] = $mostraUser;
+        $listaPosts = $post->listarPosts();          
         $_REQUEST['posts'] = $listaPosts;
         $this->viewPosts();
+    }
+
+    private function like()     
+    {
+        session_start(); 
+        $post_id = $_POST['post_id'];
+        $post = new Post();
+        $rs = $post->like($post_id, $_SESSION['fakeig']['user']['id']);
+
+        header ('Location:posts');
     }
 }
