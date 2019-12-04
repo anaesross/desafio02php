@@ -19,7 +19,11 @@
 
                 case "autentica-user"; 
                     $this->autenticaUser();
-                    break;                
+                break;  
+
+                case "logout-user"; 
+                    $this->logoutUser();
+                break;                
             }
         }
 
@@ -44,10 +48,18 @@
             var_dump($resultado);
             exit; */
             if($resultado){
-                echo  "<script>alert!('Usuário cadastrado com sucesso!);</script>";
+                echo  "<script>alert('Usuário cadastrado com sucesso!);</script>";
                 header('Location:posts');
             }else {
-                echo  "<script>alert!('Erro ao cadastrar o usuário!);</script>";
+                echo  "<script>alert('Erro ao cadastrar o usuário!);</script>";
+            }
+        }
+
+        public function logoutUser(){
+                session_start();
+            if(isset($_SESSION['fakeig']['user'])){
+                session_destroy();
+                header('Location:login-user');
             }
         }
 
